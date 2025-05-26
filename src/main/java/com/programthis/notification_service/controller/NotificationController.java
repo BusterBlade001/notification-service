@@ -18,7 +18,7 @@ public class NotificationController {
     public ResponseEntity<String> sendEmail(@RequestBody EmailNotificationService.NotificationRequest notificationRequest) {
         try {
             emailNotificationService.sendEmailNotification(notificationRequest);
-            return ResponseEntity.ok("notificacion enviada correctamente");
+            return ResponseEntity.ok("Notificacion enviada correctamente");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error envio de notificacion" + e.getMessage());
         }
