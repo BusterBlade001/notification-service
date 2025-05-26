@@ -24,7 +24,7 @@ public class EmailNotificationService { // Podrías tener diferentes servicios p
 
     public void sendEmailNotification(NotificationRequest request) {
         NotificationLog log = new NotificationLog();
-        log.setRecipient(request.recipientEmail());
+        log.setReceiver(request.recipientEmail());
         log.setType(request.type());
         log.setSubject(request.subject());
         log.setMessage(request.messageBody());
