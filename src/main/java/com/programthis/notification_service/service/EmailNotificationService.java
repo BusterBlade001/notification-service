@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class EmailNotificationService { 
@@ -15,7 +16,7 @@ public class EmailNotificationService {
     private NotificationLogRepository notificationLogRepository;
 
     public static record NotificationRequest(String receiverEmail, String subject, String messageBody, String type) {}
-
+    
     public void sendEmailNotification(NotificationRequest request) {
         NotificationLog log = new NotificationLog();
         log.setReceiver(request.receiverEmail());
@@ -38,4 +39,19 @@ public class EmailNotificationService {
         }
         notificationLogRepository.save(log);
     }
+    public List<NotificationLog> getLogsByReceiver(String email) {
+    return notificationLogRepository.findByReceiver(email);
 }
+
+public List<NotificationLog> getLogsByType(String type) {
+    return notificationLogRepository.findByType(type); // Llama al nuevo método del repositorio
+}
+
+public List<NotificationLog> getAllLogs() {
+    return notificationLogRepository.findAll();
+}
+
+    
+}
+
+
