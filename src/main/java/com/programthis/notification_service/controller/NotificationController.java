@@ -25,7 +25,7 @@ public class NotificationController {
         }
     }
 
-    @GetMapping("/logs/recipient/{email}") 
+    @GetMapping("/logs/receiver/{email}") 
     public ResponseEntity<List<NotificationLog>> getLogsByEmail(@PathVariable String email) {
         List<NotificationLog> logs = emailNotificationService.getLogsByReceiver(email); // Llama al método del servicio
         if (logs.isEmpty()) {
