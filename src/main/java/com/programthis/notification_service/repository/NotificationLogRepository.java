@@ -10,6 +10,4 @@ import java.util.List;
 public interface NotificationLogRepository extends JpaRepository<NotificationLog, Long> {
     List<NotificationLog> findByReceiver(String receiver);
     List<NotificationLog> findByTypeAndStatus(String type, String status);
-    List<NotificationLog> findByReceiverpient(String receiver);
-    List<NotificationLog> findByType(String type);
 }
