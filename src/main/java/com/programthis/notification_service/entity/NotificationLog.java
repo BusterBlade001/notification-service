@@ -20,7 +20,7 @@ public class NotificationLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long logId;
 
-    private String Receiver; // Ej: email, userId o systema de grupo administrativo
+    private String receiver; // Ej: email, userId o systema de grupo administrativo
     private String type; // tipo de notificacion
     private String subject;
     @jakarta.persistence.Column(length = 1000) // Para mensajes más largos

@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface NotificationLogRepository extends JpaRepository<NotificationLog, Long> {
-    List<NotificationLog> findByReceiver(String Receiver);
+    List<NotificationLog> findByReceiver(String receiver);
     List<NotificationLog> findByTypeAndStatus(String type, String status);
 }
