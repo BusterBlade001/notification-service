@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/notifications") // Ruta base que ya tenías
+@RequestMapping("/api/v1/notifications") 
 public class NotificationController {
 
     @Autowired
     private EmailNotificationService emailNotificationService;
 
-    // Tu endpoint POST para enviar notificaciones (este ya te funciona)
+  
     @PostMapping("/email")
     public ResponseEntity<String> sendEmail(@RequestBody EmailNotificationService.NotificationRequest notificationRequest) {
         try {
@@ -27,18 +27,18 @@ public class NotificationController {
 
     @GetMapping("/logs/receiver/{email}") 
     public ResponseEntity<List<NotificationLog>> getLogsByEmail(@PathVariable String email) {
-        List<NotificationLog> logs = emailNotificationService.getLogsByReceiver(email); // Llama al método del servicio
+        List<NotificationLog> logs = emailNotificationService.getLogsByReceiver(email); 
         if (logs.isEmpty()) {
-            return ResponseEntity.notFound().build(); // Opcional: devolver 404 si no hay logs
+            return ResponseEntity.notFound().build(); 
         }
         return ResponseEntity.ok(logs);
     }
 
     @GetMapping("/logs/type/{type}") 
     public ResponseEntity<List<NotificationLog>> getLogsByType(@PathVariable String type) {
-        List<NotificationLog> logs = emailNotificationService.getLogsByType(type); // Llama al método del servicio
+        List<NotificationLog> logs = emailNotificationService.getLogsByType(type); 
         if (logs.isEmpty()) {
-            return ResponseEntity.notFound().build(); // Opcional
+            return ResponseEntity.notFound().build(); 
         }
         return ResponseEntity.ok(logs);
     }
