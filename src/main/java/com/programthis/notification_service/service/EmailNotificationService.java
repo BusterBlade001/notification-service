@@ -14,11 +14,11 @@ public class EmailNotificationService {
     @Autowired
     private NotificationLogRepository notificationLogRepository;
 
-    public static record NotificationRequest(String recipientEmail, String subject, String messageBody, String type) {}
+    public static record NotificationRequest(String receiverEmail, String subject, String messageBody, String type) {}
 
     public void sendEmailNotification(NotificationRequest request) {
         NotificationLog log = new NotificationLog();
-        log.setReceiver(request.recipientEmail());
+        log.setReceiver(request.receiverEmail());
         log.setType(request.type());
         log.setSubject(request.subject());
         log.setMessage(request.messageBody());
@@ -26,11 +26,11 @@ public class EmailNotificationService {
 
         try {
 
-            System.out.println("Simulando Email: " + request.recipientEmail());
+            System.out.println("Simulando Email: " + request.receiverEmail());
             System.out.println("Sujeto: " + request.subject());
             System.out.println("cuerpo de texto: " + request.messageBody());
 
-            log.setStatus("SENT");
+            log.setStatus("Enviado");
         } catch (Exception e) {
 
             System.err.println("error de envio : " + e.getMessage());
